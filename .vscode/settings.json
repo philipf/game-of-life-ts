@@ -1,0 +1,13 @@
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+        "node_modules": true,
+        //"**/*.js": true,
+        //"**/*.map": true
+    },
+
+    "mochaExplorer.files": "test/**/*.spec.ts",
+    "mochaExplorer.require": "ts-node/register",
+    "testExplorer.codeLens": true
+
+}

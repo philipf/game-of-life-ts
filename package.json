@@ -1,0 +1,25 @@
+{
+  "name": "automata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/hello.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.0.0"
+  },
+  "scripts": {
+    "test": "nyc mocha -r ts-node/register test/**/*.spec.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
