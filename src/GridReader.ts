@@ -31,6 +31,10 @@ export class GridReader
                     n.count++;
                 }
 
+                // Optimisation, rules only go up 3
+                if (n.count > 2)
+                    return n;
+
                 arrayIdx++;
             }
         }
