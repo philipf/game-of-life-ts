@@ -1,11 +1,16 @@
-import { GridModel } from "./gridModel";
+import { GridModel } from "./GridModel";
+import { Neighbours } from "./Neighbours";
 
 export class GridReader
 {
     constructor(private gridModel: GridModel) {}
 
     getNeighbours(x: number, y: number) : Neighbours {
-        let n : Neighbours = { count: 0, state: []};
+        let n : Neighbours = { 
+            count: 0, 
+            states: [], 
+            myState: this.read(x, y)
+        };
 
         let arrayIdx = 0;
         for (let yn = -1; yn < 2; yn++) {
@@ -17,7 +22,7 @@ export class GridReader
 
                 const value: boolean = this.read(xr, yr);
                 
-                n.state[arrayIdx] = value
+                n.states[arrayIdx] = value
 
                 const isCurrentCell = (x === xr && y === yr);
 
@@ -44,14 +49,4 @@ export class GridReader
 
         return this.gridModel.getValue(x ,y);
     }
-}
-
-export interface Neighbours {
-    count : number;
-
-    // 0 1 2
-    // 3 4 5
-    // 6 7 8
-    state : boolean[];
-
 }

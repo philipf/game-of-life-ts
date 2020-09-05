@@ -1,5 +1,5 @@
-import { GridModel } from '../src/gridModel';
-import { GridReader } from '../src/gridReader';
+import { GridModel } from '../src/GridModel';
+import { GridReader } from '../src/GridReader';
 import { expect } from 'chai';
 import 'mocha';
 

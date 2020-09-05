@@ -1,4 +1,4 @@
-import { GridModel } from '../src/gridModel';
+import { GridModel } from '../src/GridModel';
 import { expect } from 'chai';
 import 'mocha';
 
