@@ -2,7 +2,10 @@
 Conway's Game of Life code kata in TypeScript 4
 
 # Work in progress
-This version only contain the project structure with basic testing infrastructure.
+
+View current progress here:
+
+https://game-of-life-ts.notnot.ninja/
 
 VS code extensions
 - Live Server
