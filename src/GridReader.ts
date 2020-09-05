@@ -32,7 +32,7 @@ export class GridReader
                 }
 
                 // Optimisation, rules only go up 3
-                if (n.count > 2)
+                if (n.count > 3)
                     return n;
 
                 arrayIdx++;
