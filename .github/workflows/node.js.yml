@@ -35,5 +35,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./
-        cname: game-of-live-ts.notnot.ninja
+        cname: game-of-life-ts.notnot.ninja
 #          force_orphan: true      
