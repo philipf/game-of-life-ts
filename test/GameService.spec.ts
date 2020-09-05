@@ -70,6 +70,7 @@ describe('Patterns', function() {
 
     });    
 
+    
     it('Blinker - Period 3', function() {
       const service = new GameService(3,3)
       const gm = service.currentState;
@@ -82,10 +83,11 @@ describe('Patterns', function() {
 
       service.applyChanges(changes);
       
-      let period1 = service.tick();
       let period2 = service.tick();
 
       expect(period2.length).to.equal(4);      
+
+      service.tick(); // Tick to period 3
 
       expect(gm.getValue(0,1), "0,0").to.equal(true);
       expect(gm.getValue(1,1), "0,1").to.equal(true);
@@ -142,8 +144,7 @@ describe('Patterns', function() {
       service.applyChanges(changes);
       
       let period1 = service.tick();
-
-      expect(period1.length).to.equal(5);
+      expect(period1.length).to.equal(4);
 
       expect(gm.getValue(10, 10)).to.equal(false);
       expect(gm.getValue(11, 10)).to.equal(false);

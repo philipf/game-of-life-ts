@@ -20,10 +20,7 @@ function drawChanges(ctx: CanvasRenderingContext2D,
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-
     const service = new GameService(50,50)
-    const gm = service.currentState;
-
     let changes: Array<ChangeResult> = [
         new ChangeResult(0, 1, true),
         new ChangeResult(1, 1, true),
@@ -32,14 +29,13 @@ document.addEventListener("DOMContentLoaded", function(){
         new ChangeResult(6, 1, true),
         new ChangeResult(6, 2, true),
         new ChangeResult(7, 1, true),        
-        //new ChangeResult(7, 2, true), 
+        new ChangeResult(7, 2, true), 
         
         new ChangeResult(10, 10, true),
         new ChangeResult(12, 10, true),
-        //new ChangeResult(11, 11, true),        
+        new ChangeResult(11, 11, true),        
         new ChangeResult(12, 11, true),                
         new ChangeResult(11, 12, true),                
-        new ChangeResult(11, 14, true),                
       ];
 
     service.applyChanges(changes);
@@ -59,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
             changes = service.tick();
             drawChanges(c, changes);
             console.log(changes);
-        }, 100);
+        }, 2000);
 
             // console.log(changes);        
             // changes = service.tick();

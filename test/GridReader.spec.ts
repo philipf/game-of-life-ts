@@ -76,16 +76,16 @@ describe('GridReader', function() {
     grid.setValue(1,3, true);
     grid.setValue(2,3, true);    
 
-    it('should return 3n for new 1,2', function() { 
+    it('should return 4n for new 1,2', function() { 
       let r = new GridReader(grid);
-      expect(r.getNeighbours(1,2).count).to.equal(3); 
+      expect(r.getNeighbours(1,2).count).to.equal(4); 
     });     
 
-    it('should return 3n for new 1,2 (active)', function() { 
+    it('should return 4n for new 1,2 (active)', function() { 
       let r = new GridReader(grid);
       grid.setValue(1,2, true);
 
-      expect(r.getNeighbours(1,2).count).to.equal(3); 
+      expect(r.getNeighbours(1,2).count).to.equal(4); 
     });       
   })  
 });

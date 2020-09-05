@@ -9,34 +9,24 @@
   "files": [
     "out"
   ],
-
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "typescript": "^4.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
     "chai": "^4.2.0",
     "mocha": "^8.1.3",
     "nyc": "^15.1.0",
-    "rollup": "^2.26.10",
-    "terser": "^5.3.0",
-    "ts-node": "^9.0.0"
+    "ts-loader": "^8.0.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "test": "nyc mocha -r ts-node/register test/**/*.spec.ts",
-
-    "clean": "rm -fr out",
-    "build": "npm run clean && tsc --project tsconfig.json && npm run bundle:esm && npm run bundle:esm:min && npm run bundle:umd && npm run bundle:umd:min && npm run build:stats",
-    "build:stats": "(echo '\\033[35;3m' ; cd out && ls -lh index*js index*gz | tail -n +2 | awk '{print $5,$9}')",
-    "bundle:esm": "rollup out/index.js --file out/index.mjs --format esm",
-    "bundle:esm:min": "terser --ecma 6 --compress --mangle --module -o out/index.min.mjs -- out/index.mjs && gzip -9 -c out/index.min.mjs > out/index.min.mjs.gz",
-    "bundle:umd": "rollup out/index.js --file out/index.umd.js --format umd --name sayHello",
-    "bundle:umd:min": "terser --ecma 6 --compress --mangle -o out/index.umd.min.js -- out/index.umd.js && gzip -9 -c out/index.umd.min.js > out/index.umd.min.js.gz"
-
+    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" nyc mocha -r ts-node/register test/**/*.spec.ts"
   },
   "author": "",
   "license": "ISC"
