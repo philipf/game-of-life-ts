@@ -5,7 +5,7 @@ import 'mocha';
 
 describe('GridReader', function() {
 
-  describe('Basic', function() {  
+  describe('3 Active', function() {  
     const grid = new GridModel(40,40);
 
     //   0 1 2 3 4 5 6
@@ -20,6 +20,11 @@ describe('GridReader', function() {
     grid.setValue(0,1, true);
     grid.setValue(0,2, true);
     grid.setValue(1,1, true);
+
+    it('should return 2n for new 0,1', function() { 
+      let r = new GridReader(grid);
+      expect(r.getNeighbours(0,1).count).to.equal(2); 
+    });     
 
     it('should return 2n for new 0,0', function() { 
       let r = new GridReader(grid);
@@ -45,6 +50,42 @@ describe('GridReader', function() {
       let r = new GridReader(grid);
       expect(r.getNeighbours(5,5).count).to.equal(0); 
     });     
-
   })
+
+  describe('8/9 Active', function() {  
+    const grid = new GridModel(40,40);
+
+    //   0 1 2 3 4 5 6
+    // 0
+    // 1 X X X
+    // 2 X   X
+    // 3 X X X
+    // 4
+    // 5
+    // 6
+
+    grid.setValue(0,1, true);
+    grid.setValue(1,1, true);
+    grid.setValue(2,1, true);
+
+    grid.setValue(0,2, true);
+    //grid.setValue(1,2, true);
+    grid.setValue(2,2, true);
+    
+    grid.setValue(0,3, true);
+    grid.setValue(1,3, true);
+    grid.setValue(2,3, true);    
+
+    it('should return 9n for new 1,2', function() { 
+      let r = new GridReader(grid);
+      expect(r.getNeighbours(1,2).count).to.equal(8); 
+    });     
+
+    it('should return 9n for new 1,2 (active)', function() { 
+      let r = new GridReader(grid);
+      grid.setValue(1,2, true);
+
+      expect(r.getNeighbours(1,2).count).to.equal(8); 
+    });       
+  })  
 });

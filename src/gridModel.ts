@@ -35,7 +35,7 @@ export class GridModel
 
         const result = this.state[x][y];
 
-        // Same, of not initialised then default to false.
+        // Same, if not initialised then default to false.
         if (!result)
             return false;
 

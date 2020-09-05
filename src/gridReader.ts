@@ -21,7 +21,7 @@ export class GridReader
 
                 const isCurrentCell = (x === xr && y === yr);
 
-                if (value && !isCurrentCell)
+                if (!isCurrentCell && value)
                 {
                     n.count++;
                 }
