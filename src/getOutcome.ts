@@ -1,6 +1,5 @@
 import { Neighbours } from "./Neighbours";
 
-
 export function getOutcome(neighbours: Neighbours) : boolean {
     // https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
     
@@ -20,5 +19,3 @@ export function getOutcome(neighbours: Neighbours) : boolean {
     // Similarly, all other dead cells stay dead.
     return false;
 }
-
-
