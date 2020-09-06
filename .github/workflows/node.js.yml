@@ -27,14 +27,13 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    
+
     - run: npm report
     - uses: codecov/codecov-action@v1
     with:
       file: ./coverage.lcov # optional
       name: codecov-umbrella # optional
       fail_ci_if_error: true # optional (default = false)    
-
     - run: mkdir publish
     - run: cp index.html ./publish/
     - run: mkdir publish/dist
