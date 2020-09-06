@@ -1,6 +1,6 @@
 import { GameService, ChangeResult } from "./GameService";
 
-const cellHeight = 10;
+const cellHeight = 14;
 const cellWidth = cellHeight;
 const cellBorder = 2;
 
@@ -20,7 +20,7 @@ function drawChanges(ctx: CanvasRenderingContext2D,
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    const service = new GameService(50,100)
+    const service = new GameService(150, 150)
     let changes: Array<ChangeResult> = [
         new ChangeResult(0, 1, true),
         new ChangeResult(1, 1, true),
@@ -42,8 +42,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let canvas  = <HTMLCanvasElement> document.getElementById('grid');
 
-    if (!canvas)
+    if (!canvas) {
         console.log("oops no canvas ");
+        return;
+    }
 
     let ctx : CanvasRenderingContext2D | null = canvas.getContext('2d');
 
@@ -54,31 +56,6 @@ document.addEventListener("DOMContentLoaded", function(){
         setInterval(() => {
             changes = service.tick();
             drawChanges(c, changes);
-            console.log(changes);
-        }, 200);
-
-            // console.log(changes);        
-            // changes = service.tick();
-            // ctx.fillStyle = "green";
-            // drawChanges(c, changes);
-            // console.log(changes);        
-
-            // changes = service.tick();
-            // ctx.fillStyle = "red";
-            // drawChanges(c, changes);
-            // console.log(changes);        
-            
-            // changes = service.tick();
-            // ctx.fillStyle = "blue";
-            // drawChanges(c, changes);
-            // console.log(changes);                    
+        }, 1000);
     }
-
-    console.log("done");
-    
 });
-
-
-
-console.log('ready');
-
