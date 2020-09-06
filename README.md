@@ -1,4 +1,7 @@
 # game-of-life-ts
+
+[![codecov](https://codecov.io/gh/philipf/game-of-life-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/philipf/game-of-life-ts)
+
 Conway's Game of Life code kata in TypeScript 4
 
 # Work in progress
