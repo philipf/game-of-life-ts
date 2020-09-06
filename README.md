@@ -19,5 +19,5 @@ VS code extensions
 npx tsc --watch
 
 npm run test
-npx webpack
+npx webpack -w
 ```

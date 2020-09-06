@@ -1,6 +1,7 @@
 import { getOutcome } from './getOutcome';
 import { GridReader } from './GridReader';
 import { GridModel } from "./GridModel";
+import { Cell } from './Cell';
 
 export class GameService
 {
@@ -13,8 +14,8 @@ export class GameService
     }
 
     // TODO Optimise, only read active map
-    public tick() : Array<ChangeResult> {
-        let changes = new Array<ChangeResult>();
+    public tick() : Array<Cell> {
+        let changes = new Array<Cell>();
     
         for(let y = 0; y < this.currentState.height; y++) {
             for(let x = 0; x < this.currentState.width; x++) {
@@ -24,7 +25,7 @@ export class GameService
                 let newState: boolean = getOutcome(neighbours);
 
                 if (currentState != newState) {
-                    changes.push(new ChangeResult(x, y, newState));
+                    changes.push(new Cell(x, y, newState));
                 }
             }
         }
@@ -34,14 +35,9 @@ export class GameService
         return changes;
     }
 
-    public applyChanges(changes: Array<ChangeResult>) {
+    public applyChanges(changes: Array<Cell>) {
         changes.forEach(c => {
             this.currentState.setValue(c.x, c.y, c.state);
         });
     }
-}
-
-export class ChangeResult
-{
-    constructor(public x: number, public y: number, public state: boolean) {}
 }

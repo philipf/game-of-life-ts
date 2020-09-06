@@ -1,11 +1,13 @@
-import { GameService, ChangeResult } from "./GameService";
+import { GameService } from "./GameService";
+import { Cell } from "./Cell";
+import { CellFactory } from "./CellFactory";
 
 const cellHeight = 10;
 const cellWidth = cellHeight;
-const cellBorder = 2;
+const cellBorder = 1;
 
 function drawChanges(ctx: CanvasRenderingContext2D, 
-    changes: Array<ChangeResult>) {
+    changes: Array<Cell>) {
 
     changes.forEach(c => {
         let xPos = c.x * cellWidth + (c.x * cellBorder);
@@ -21,22 +23,29 @@ function drawChanges(ctx: CanvasRenderingContext2D,
 
 document.addEventListener("DOMContentLoaded", function(){
     const service = new GameService(50,100)
-    let changes: Array<ChangeResult> = [
-        new ChangeResult(0, 1, true),
-        new ChangeResult(1, 1, true),
-        new ChangeResult(2, 1, true),
 
-        new ChangeResult(6, 1, true),
-        new ChangeResult(6, 2, true),
-        new ChangeResult(7, 1, true),        
-        new ChangeResult(7, 2, true), 
-        
-        new ChangeResult(10, 10, true),
-        new ChangeResult(12, 10, true),
-        new ChangeResult(11, 11, true),        
-        new ChangeResult(12, 11, true),                
-        new ChangeResult(11, 12, true),                
-      ];
+    const values = `
+    ,,,,,,,X,X,X,X,X,X,,,,,,,,,X,X,X,X,X,X,X,,,,,,,,,,,,,,X,X,X,X,X,X,,,
+    ,,,,,,X,,,,,,X,,,,,,,X,X,,,,,,,,X,X,,,,,,,,,,,X,,,,,,X,,,
+    ,,,,,X,,,,,,,X,,,,,X,X,,,,,,,,,,,,X,X,,,,,,,,X,,,,,,,X,,,
+    ,,,,X,,,,X,X,,,X,,,,X,,,,,,,X,X,X,,,,,,,X,,,,,,X,,,,X,X,,,X,,,
+    ,,,X,,,,X,,X,,,X,,,,X,,,,,,X,,,,X,,,,,,X,,,,,X,,,,X,,X,,,X,,,
+    ,,X,,,,X,,,X,,,X,,,,X,,,,,X,,,,,,X,,,,,X,,,,X,,,,X,,,X,,,X,,,
+    ,X,,,,X,,,,X,,,X,,,,X,,,,,X,,,,,,X,,,,,X,,,X,,,,X,,,,X,,,X,,,
+    X,,,,X,X,X,X,X,X,,,X,X,X,,X,,,,,X,,,,,,X,,,,,X,,X,,,,X,X,X,X,X,X,,,X,X,X,
+    X,,,,,,,,,,,,,,X,,X,,,,,X,,,,,,X,,,,,X,,X,,,,,,,,,,,,,,X,
+    X,,,,,,,,,,,,,,x,,X,,,,,X,,,,,,X,,,,,X,,X,,,,,,,,,,,,,,x,
+    X,X,X,X,X,X,X,X,X,,,,X,X,X,,X,,,,,X,,,,,,X,,,,,X,,X,X,X,X,X,X,X,X,X,,,,X,X,X,
+    ,,,,,,,,X,,,,X,,,,X,,,,,X,,,,,,X,,,,,X,,,,,,,,,,X,,,,X,,,
+    ,,,,,,,,X,,,,X,,,,X,,,,,,X,,,,X,,,,,,X,,,,,,,,,,X,,,,X,,,
+    ,,,,,,,,X,,,,X,,,,X,,,,,,,X,X,X,,,,,,,X,,,,,,,,,,X,,,,X,,,
+    ,,,,,,,X,X,,,,X,X,,,,X,X,,,,,,,,,,,,X,X,,,,,,,,,,X,X,,,,X,X,,
+    ,,,,,,,X,,,,,,X,,,,,,X,X,,,,,,,,X,X,,,,,,,,,,,,X,,,,,,X,,
+    ,,,,,,,X,X,X,X,X,X,X,,,,,,,,X,X,X,X,X,X,X,,,,,,,,,,,,,,X,X,X,X,X,X,X,,
+    
+    `;
+
+    let changes = CellFactory.create(values, 13, 12);
 
     service.applyChanges(changes);
 
@@ -48,37 +57,15 @@ document.addEventListener("DOMContentLoaded", function(){
     let ctx : CanvasRenderingContext2D | null = canvas.getContext('2d');
 
     if (ctx) {
+        ctx.fillStyle = "#515151";
         let c: CanvasRenderingContext2D = ctx;
         drawChanges(c, changes);
 
-        setInterval(() => {
-            changes = service.tick();
-            drawChanges(c, changes);
-            console.log(changes);
-        }, 200);
-
-            // console.log(changes);        
-            // changes = service.tick();
-            // ctx.fillStyle = "green";
-            // drawChanges(c, changes);
-            // console.log(changes);        
-
-            // changes = service.tick();
-            // ctx.fillStyle = "red";
-            // drawChanges(c, changes);
-            // console.log(changes);        
-            
-            // changes = service.tick();
-            // ctx.fillStyle = "blue";
-            // drawChanges(c, changes);
-            // console.log(changes);                    
-    }
-
-    console.log("done");
-    
+        setTimeout(() => {
+            setInterval(() => {
+                changes = service.tick();
+                drawChanges(c, changes);
+            }, 200);            
+        }, 5000);
+   }
 });
-
-
-
-console.log('ready');
-

@@ -1,6 +1,7 @@
-import { GameService, ChangeResult } from '../src/GameService';
+import { GameService} from '../src/GameService';
 import { expect } from 'chai';
 import 'mocha';
+import { Cell } from '../src/Cell';
 
 
 describe('Patterns', function() {
@@ -19,10 +20,10 @@ describe('Patterns', function() {
           }
         });
               
-        let changes: Array<ChangeResult> = [
-          new ChangeResult(0, 1, true),
-          new ChangeResult(1, 1, true),
-          new ChangeResult(2, 1, true),
+        let changes: Array<Cell> = [
+          new Cell(0, 1, true),
+          new Cell(1, 1, true),
+          new Cell(2, 1, true),
         ];
 
         service.applyChanges(changes);
@@ -44,10 +45,10 @@ describe('Patterns', function() {
       const service = new GameService(3,3)
       const gm = service.currentState;
 
-      let changes: Array<ChangeResult> = [
-        new ChangeResult(0, 1, true),
-        new ChangeResult(1, 1, true),
-        new ChangeResult(2, 1, true),
+      let changes: Array<Cell> = [
+        new Cell(0, 1, true),
+        new Cell(1, 1, true),
+        new Cell(2, 1, true),
       ];
 
       service.applyChanges(changes);
@@ -75,10 +76,10 @@ describe('Patterns', function() {
       const service = new GameService(3,3)
       const gm = service.currentState;
 
-      let changes: Array<ChangeResult> = [
-        new ChangeResult(0, 1, true),
-        new ChangeResult(1, 1, true),
-        new ChangeResult(2, 1, true),
+      let changes: Array<Cell> = [
+        new Cell(0, 1, true),
+        new Cell(1, 1, true),
+        new Cell(2, 1, true),
       ];
 
       service.applyChanges(changes);
@@ -118,12 +119,12 @@ describe('Patterns', function() {
           }
         });
               
-        let changes: Array<ChangeResult> = [
-          new ChangeResult(10, 10, true),
-          new ChangeResult(12, 10, true),
-          new ChangeResult(11, 11, true),        
-          new ChangeResult(12, 11, true),                
-          new ChangeResult(11, 12, true), 
+        let changes: Array<Cell> = [
+          new Cell(10, 10, true),
+          new Cell(12, 10, true),
+          new Cell(11, 11, true),        
+          new Cell(12, 11, true),                
+          new Cell(11, 12, true), 
         ];
 
         service.applyChanges(changes);
@@ -133,12 +134,12 @@ describe('Patterns', function() {
       const service = new GameService(50,50)
       const gm = service.currentState;
 
-      let changes: Array<ChangeResult> = [
-        new ChangeResult(10, 10, true),
-        new ChangeResult(12, 10, true),
-        new ChangeResult(11, 11, true),        
-        new ChangeResult(12, 11, true),                
-        new ChangeResult(11, 12, true), 
+      let changes: Array<Cell> = [
+        new Cell(10, 10, true),
+        new Cell(12, 10, true),
+        new Cell(11, 11, true),        
+        new Cell(12, 11, true),                
+        new Cell(11, 12, true), 
       ];
 
       service.applyChanges(changes);
