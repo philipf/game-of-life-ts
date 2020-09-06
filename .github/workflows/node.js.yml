@@ -29,11 +29,12 @@ jobs:
     - run: npm test
 
     - run: npm report
-    - uses: codecov/codecov-action@v1
-    with:
-      file: ./coverage.lcov # optional
-      name: codecov-umbrella # optional
-      fail_ci_if_error: true # optional (default = false)    
+    - name: Codecov report
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.lcov # optional
+        name: codecov-umbrella # optional
+
     - run: mkdir publish
     - run: cp index.html ./publish/
     - run: mkdir publish/dist
