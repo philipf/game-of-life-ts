@@ -27,7 +27,8 @@
   },
   "scripts": {
     "build": "npx tsc; npx webpack ",
-    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" nyc mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "env TS_NODE_PROJECT=\"tsconfig.testing.json\" nyc mocha -r ts-node/register test/**/*.spec.ts",
+    "report": "nyc report --reporter=text-lcov > coverage.lcov"
   },
   "author": "",
   "license": "ISC"
