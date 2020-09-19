@@ -66,6 +66,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 changes = service.tick();
                 drawChanges(c, changes);
             }, 200);            
-        }, 5000);
+        }, 2000);
    }
 });
